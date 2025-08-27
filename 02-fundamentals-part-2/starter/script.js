@@ -57,3 +57,49 @@ function yearsUntilRetirement(birthYear, firstName) {
 }
 
 console.log(yearsUntilRetirement(2004, "Sean"));
+
+
+//function scope
+
+const globalVar = "I am global";
+function testScope(){
+    const localVar = "I am Local";
+    console.log(globalVar);
+    console.log(localVar);
+}
+
+testScope();
+console.log(globalVar);
+//console.log(localVar); // error, localVar is not defined
+
+////////////////////////////////////
+// Coding Challenge #1
+
+// Function to calculate average of 3 scores
+function calcAverage(score1, score2, score3) {
+  const average = (score1 + score2 + score3) / 3;
+  return average;
+}
+
+// Function to check winner
+function checkWinner(avgDolphins, avgKoalas) {
+  if (avgDolphins >= 2 * avgKoalas) {
+    return `Dolphins win (${avgDolphins} vs. ${avgKoalas})`;
+  } else if (avgKoalas >= 2 * avgDolphins) {
+    return `Koalas win (${avgKoalas} vs. ${avgDolphins})`;
+  } else {
+    return `No team wins... Koalas scored ${avgKoalas}, Dolphins scored ${avgDolphins}`;
+  }
+}
+
+// Test Data 1
+let scoreDolphins = calcAverage(44, 23, 71);
+let scoreKoalas = calcAverage(65, 54, 49);
+console.log(checkWinner(scoreDolphins, scoreKoalas));
+
+// Test Data 2
+scoreDolphins = calcAverage(85, 54, 41);
+scoreKoalas = calcAverage(23, 34, 27);
+console.log(checkWinner(scoreDolphins, scoreKoalas));
+
+
