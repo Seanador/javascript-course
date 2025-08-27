@@ -321,7 +321,7 @@ const bill = 430; // Test with 275, 40, and 430
 const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2; // Your ternary operator here
 
 // Step 2: Create beautiful output with template literal
-console.log(`The bill was: ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+console.log(`The bill was: ${bill}, thse tip was ${tip}, and the total value ${bill + tip}`);
 
 // Expected outputs:
 // Bill 275: "The bill was 275, the tip was 41.25, and the total value 316.25"
