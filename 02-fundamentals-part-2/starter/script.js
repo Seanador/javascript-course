@@ -295,3 +295,169 @@ console.log(seanObject);
 // WHen to use dot vs bracket notation
 const property = "job";
 console.log(seanObject[property]); 
+
+// Ordered, indexed data - think lists
+const listOfYears = [1991, 1984, 2008, 2020];
+const shoppingList = ["apples", "bananas", "milk", "bread"];
+const testScores = [85, 92, 78, 96];
+
+// Named, descriptive data - think entities
+const person = {
+  name: "Jonas",
+  age: 46,
+  occupation: "teacher",
+};
+
+const car = {
+  brand: "Toyota",
+  model: "Camry",
+  year: 2020,
+  color: "blue",
+};
+
+// objects can contain arrays, and arrays can contain objects
+const student = {
+    name: "Sarah",
+    grades: [85, 92, 78],
+    address: {
+        street: "123 Main St",
+        city: "New York",
+        country: "USA"
+    },
+};
+
+console.log(student.grades[0]);
+console.log(student.address.city);
+
+// Object Methods
+const John = {
+    firstName: "John",
+    lastName: "Doe",
+    birthYear: 1990,
+    job: "teacher",
+    friends: ["Michael", "Peter", "Steven"],
+    hasDriverLicense: true,
+
+    calcAge: function (birthYear) {
+        return 2025 - birthYear;
+    },
+}
+
+console.log(John.calcAge(2000));
+
+const johnImproved = {
+    firstName: "John",
+    lastName: "Doe",
+    birthYear: 1990,
+    job: "teacher",
+    friends: ["Michael", "Peter", "Steven"],
+    hasDriverLicense: true,
+
+    calcAge: function () {
+        this.age = 2025 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function() {
+        return `${this.firstName} is a ${this.calcAge()}-year old
+         ${this.job}, 
+         and he has ${this.hasDriverLicense ? 'a' : 'no'} driver's license.`;
+    }   
+
+};
+
+console.log(johnImproved.calcAge());
+console.log(johnImproved.age);
+console.log(johnImproved.getSummary());
+
+const bankAccount = {
+    owner: "Sean Morales",
+    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+    interestRate: 1.2, 
+    pin: 1917,
+
+    calcBalance: function() {
+        this.balance = this.movements.reduce((acc, mov) => acc + mov, 0);
+        return this.balance;
+    },
+
+    deposit: function(amount) {
+        this.movements.push(amount);
+        console.log(`Deposited: ${amount}`);
+    },
+
+    withdraw: function(amount) {
+        this.movements.push(-amount);
+        console.log(`Withdrew: ${amount}`);
+    },
+
+    getAccountSummary: function() {
+        return `Owner: ${this.owner}
+        Balance: $${this.calcBalance()}
+        Interest Rate: ${this.interestRate}%`;
+    },
+};  
+
+console.log(bankAccount.getAccountSummary());
+bankAccount.deposit(500);
+console.log(bankAccount.getAccountSummary());
+
+////////////////////////////////////
+// Coding Challenge #3 - User Profile System
+
+const user = {
+  firstName: "Sarah",
+  lastName: "Johnson",
+  birthYear: 1995,
+  location: "New York",
+  interests: ["photography", "travel", "coding"],
+  friends: [
+    { name: "Michael", status: "active" },
+    { name: "Emma", status: "inactive" },
+    { name: "David", status: "active" },
+  ],
+  isActive: true,
+
+  // Calculate age method
+  calcAge: function () {
+    this.age = new Date().getFullYear() - this.birthYear;
+    return this.age;
+  },
+
+  // Add friend method
+  addFriend: function (name, status = "active") {
+    this.friends.push({ name, status: status });
+    return this.friends.length;
+  },
+
+  // Get active friends count
+  getActiveFriends: function () {
+    const activeFriends = this.friends.filter((friend) => friend.status === "active");
+    return activeFriends.length;
+  },
+
+  // Toggle active status
+  toggleStatus: function () {
+    this.isActive = !this.isActive;
+    return this.isActive;
+  },
+
+  // Generate profile summary
+  getSummary: function () {
+    const age = this.calcAge();
+    const activeFriendsCount = this.getActiveFriends();
+    const status = this.isActive ? "active" : "inactive";
+
+    return `${this.firstName} ${this.lastName} is a ${age}-year-old from ${this.location}.` +
+        ` They are currently ${status} and have ${activeFriendsCount} active friends.` +
+        ` Their interests include: ${this.interests.join(", ")}.`;
+
+  },
+};
+
+// Test your user profile system
+console.log(user.getSummary());
+user.addFriend("Alex", "active");
+user.toggleStatus();
+console.log(`\nAfter updates:`);
+console.log(user.getSummary());
