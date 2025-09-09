@@ -235,4 +235,159 @@
 
 // console.log('Framework mastered - ready for independent problem solving!');
 // console.log('Hour 2 Done!');
-console.log('hello world');
+
+// Developer Skills Hour 3
+'use strict';
+
+console.log('=== HOUR 3: RESEARCH & DEBUGGING MASTERY ===');
+
+/*
+Random Googling vs Strategic Research:
+ 
+RANDOM GOOGLING (Beginner Approach):
+- Search only when completely stuck
+- Use vague search terms like "javascript array problem"
+- Copy-paste first solution found
+- Don't understand what the code does
+- Same problems happen repeatedly
+ 
+STRATEGIC RESEARCH (Professional Approach):
+- Research proactively to understand concepts
+- Use specific, targeted search terms
+- Evaluate multiple solutions
+- Understand solutions before implementing
+- Build knowledge for future problems
+*/
+
+console.log(
+  'Goal: Master research and debugging like a professional developer'
+);
+console.log(
+  'Strategic research builds lasting knowledge, not just quick fixes'
+);
+
+////////////////////////////////////
+// PROFESSIONAL GOOGLE RESEARCH TECHNIQUES
+
+/*
+RESEARCH CHALLENGE: Find Maximum Value in Array
+Search progression:
+1. "javascript maximum value array"
+2. "javascript Math.max array"
+3. "javascript Math.max spread operator array"
+4. "Math.max MDN javascript"
+*/
+
+function demonstrateArrayMax(numbers) {
+  // Method 1 - Using Math.max with spread operator (from research)
+  const method1 = Math.max(...numbers);
+
+  // Method 2 - Using for loop (traditional approach)
+  let method2 = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > method2) method2 = numbers[i];
+  }
+
+  // Method 3 - Using reduce method (functional approach)
+  const method3 = numbers.reduce((max, current) =>
+    current > max ? current : max
+  );
+
+  return { method1, method2, method3 };
+}
+
+// Test our research with sample data
+const testNumbers = [3, 7, 2, 9, 1, 5];
+const maxResults = demonstrateArrayMax(testNumbers);
+console.log('Multiple approaches from research:', maxResults);
+
+// STACK OVERFLOW RESEARCH RESULTS
+
+function reverseStringMethods(str) {
+  const method1 = str.split('').reverse().join('');
+
+  let method2 = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    method2 += str[i];
+  }
+
+  const method3 = [...str].reverse().join('');
+
+  return { method1, method2, method3 };
+}
+
+const reverseResults = reverseStringMethods('hello');
+console.log('Stack Overflow research results:', reverseResults);
+
+// STACK OVERFLOW RESEARCH RESULTS
+
+function reverseStringMethods(str) {
+  const method1 = str.split('').reverse().join('');
+
+  let method2 = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    method2 += str[i];
+  }
+
+  const method3 = [...str].reverse().join('');
+
+  return { method1, method2, method3 };
+}
+
+// MDN DOCUMENTATION MASTERY
+
+function demonstrateConcat() {
+  const array1 = [1, 2, 3];
+  const array2 = [4, 5, 6];
+  const array3 = [7, 8, 9];
+
+  const simple = array1.concat(array2);
+
+  const multiple = array1.concat(array2, array3);
+
+  console.log('Original array1 unchanged:', array1);
+
+  return { simple, multiple };
+}
+
+// Run demo
+const concatResults = demonstrateConcat();
+console.log('MDN documentation applied:', concatResults);
+
+function calculateAverageScore(scores) {
+  if (scores.length === 0) return 0;
+
+  let total = 0;
+  for (let i = 0; i < scores.length; i++) {
+    total += scores[i];
+  }
+
+  return total / scores.length;
+}
+
+const testScores = [85, 92, 78, 96, 88];
+const fixedResult = calculateAverageScore(testScores);
+console.log('Buggy result:', fixedResult);
+
+// BROWSER DEVELOPER TOOLS MASTERY
+
+function demonstrateConsoleDebugging(data) {
+  console.group('Debugging Session');
+
+  console.log('Input data:', data);
+
+  if (typeof data !== 'object') {
+    console.warn('Warning: Expected object, got', typeof data);
+  }
+
+  console.table(data);
+  console.groupEnd();
+
+  return Array.isArray(data) ? data.length : Object.keys(data).length;
+}
+
+const arrayData = [1, 2, 3, 4, 5];
+const objectData = { name: 'John', age: 30, city: 'New York' };
+
+demonstrateConsoleDebugging(arrayData);
+demonstrateConsoleDebugging(objectData);
