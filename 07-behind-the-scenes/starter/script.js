@@ -72,23 +72,73 @@
 // timer.start();
 // timer.startModern();
 
-const functionTypes = {
-  regularFunction: function () {
-    console.log('Arguments length: ', arguments.length);
-    console.log('First argument: ', arguments[0]);
-  },
+// const functionTypes = {
+//   regularFunction: function () {
+//     console.log('Arguments length: ', arguments.length);
+//     console.log('First argument: ', arguments[0]);
+//   },
 
-  arrowFunction: () => {
-    console.log(arguments);
-    console.log('arrow function called');
-  },
+//   arrowFunction: () => {
+//     console.log(arguments);
+//     console.log('arrow function called');
+//   },
 
-  modernFunction: (...args) => {
-    console.log(`Args length`, args.length);
-    console.log('first arg: ', args[0]);
-  },
+//   modernFunction: (...args) => {
+//     console.log(`Args length`, args.length);
+//     console.log('first arg: ', args[0]);
+//   },
+// };
+
+// functionTypes.regularFunction('Hello', 'World');
+// // functionTypes.arrowFunction('test');
+// functionTypes.modernFunction('modern', 'function');
+
+// let age = 30;
+
+// let oldAge = age;
+
+// age = 31;
+// console.log('Age:', age);
+// console.log('oldAge:', oldAge);
+
+// const me = { name: 'Sean', age: 21 };
+// const friend = me;
+
+// friend.name = 'JohnDoe';
+// friend.age = 23;
+
+// console.log('me', me);
+// console.log('friend', friend);
+
+// const original = {
+//   name: 'Alice',
+//   age: 28,
+//   hobbies: ['reading', 'coding'],
+// };
+
+// const shallowCopy = { ...original };
+// shallowCopy.name = 'Bob';
+
+// console.log('original name: ', original.name);
+// console.log('shallow copy name: ', shallowCopy.name);
+
+// shallowCopy.hobbies.push('gaming');
+// console.log('original hobbies', original.hobbies);
+// console.log('shallow hobbies', shallowCopy.hobbies);
+
+const deepOriginal = {
+  name: 'Charlie',
+  age: 32,
+  address: { city: 'Paris', country: 'France' },
+  hobbies: ['travel', 'photography'],
 };
 
-functionTypes.regularFunction('Hello', 'World');
-// functionTypes.arrowFunction('test');
-functionTypes.modernFunction('modern', 'function');
+const deepCopy = structuredClone(deepOriginal);
+
+deepCopy.address.city = 'London';
+deepCopy.hobbies.push('cooking');
+
+console.log('original address:', deepOriginal.address);
+console.log('copy address:', deepCopy.address);
+console.log('original hobbies:', deepOriginal.hobbies);
+console.log('copy hobbies:', deepCopy.hobbies);
